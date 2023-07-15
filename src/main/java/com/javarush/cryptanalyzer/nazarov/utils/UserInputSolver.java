@@ -32,14 +32,12 @@ public class UserInputSolver {
         System.out.println(CHOOSEMODE2);
         //Thread.sleep(500);
         System.out.println(CHOOSEMODE3);
-        // Thread.sleep(500);
+        //Thread.sleep(500);
         System.out.println(CHOOSEMODE4);
-        // Thread.sleep(500);
+        //Thread.sleep(500);
         System.out.println(CHOOSEMODE5);
-
         Scanner console = new Scanner(System.in);
         String mode;
-
         while (true) {
             mode = console.nextLine();
             if (mode.length() != 1 && !Character.isDigit(mode.charAt(0))) {
@@ -47,12 +45,12 @@ public class UserInputSolver {
                 continue;
             }
             int modeInt = Integer.parseInt(mode);
-            if (modeInt < 0 || modeInt > 5) {
+            if (modeInt < 0 || modeInt > 4) {
                 System.out.println("plase, choose from the offered options");
             } else {
-                console.close(); // не забываем закрывать сканер
                 return mode;
             }
+            console.close(); // не забываем закрывать сканер
         }
     }
 
@@ -68,11 +66,11 @@ public class UserInputSolver {
 
     private static String getFirstParameter(String command) {
 
-            Scanner console = new Scanner(System.in);
-            System.out.println(SOURCE_PATH_REQUEST + getDefaultFirstParameter(command));
-            String firstParameter = console.nextLine();
+        Scanner console = new Scanner(System.in);
+        System.out.println(SOURCE_PATH_REQUEST + getDefaultFirstParameter(command));
+        String firstParameter = console.nextLine();
 
-            while (!(fileExistsCheck(firstParameter) && absolutePathCheck(firstParameter) && fileTxtExtensionCheck(firstParameter))) {
+        while (!(fileExistsCheck(firstParameter) && absolutePathCheck(firstParameter) && fileTxtExtensionCheck(firstParameter))) {
             if (firstParameter.equals("")) {
                 firstParameter = getDefaultFirstParameter(command);
                 break;
