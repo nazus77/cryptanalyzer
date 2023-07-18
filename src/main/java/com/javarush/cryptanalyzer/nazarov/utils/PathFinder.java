@@ -1,7 +1,6 @@
 package com.javarush.cryptanalyzer.nazarov.utils;
 
 import java.io.File;
-
 public class PathFinder {
     public static String getRoot() {
         String root = System.getProperty("user.dir");

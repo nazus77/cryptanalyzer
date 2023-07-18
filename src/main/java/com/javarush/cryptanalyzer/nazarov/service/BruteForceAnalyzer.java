@@ -2,13 +2,11 @@ package com.javarush.cryptanalyzer.nazarov.service;
 
 import com.javarush.cryptanalyzer.nazarov.entity.Result;
 
-public class BruteForce implements Action {
+public class BruteForceAnalyzer implements Action {
 
     @Override
     public Result execute(String[] parameters) {
-
-        //TODO написать логику брутфорса
-
+        //TODO написать логику
         return null;
     }
 }

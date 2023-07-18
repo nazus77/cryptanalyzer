@@ -1,9 +1,9 @@
 package com.javarush.cryptanalyzer.nazarov.service;
 
-import com.javarush.cryptanalyzer.nazarov.utils.PathFinder;
 import com.javarush.cryptanalyzer.nazarov.entity.Result;
 import com.javarush.cryptanalyzer.nazarov.entity.ResultCode;
 import com.javarush.cryptanalyzer.nazarov.exception.AppException;
+import com.javarush.cryptanalyzer.nazarov.utils.PathFinder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,6 +17,10 @@ public class Encoder implements Action {
 
         String txtFile = parameters[0];
         String encodedFile = parameters[1];
+
+
+
+
 
         Path path = Path.of(PathFinder.getRoot() + txtFile);
 
