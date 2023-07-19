@@ -11,15 +11,14 @@ public class Application {
         this.mainController = mainController;
     }
 
-    public void run() { // вернуть возвращаемый тип - Result
-        String[] args = mainController.getView().getArgs();
+    public Result run() { // вернуть возвращаемый тип - Result
+
+        String[] args = new String[]{"1", "input.txt", "decoded.txt", "3"};// это временный архив для тестирования
+        // String[] args = mainController.getView().getArgs(); раскомментировать после тестирования
         String mode = args[0];
         String[] parameters = Arrays.copyOfRange(args, 1, args.length);
 
-        System.out.println(Arrays.toString(args)); // временная  строка - для проверки корректного сбора аргументов от юзера
-
-        // return mainController.execute(mode, parameters); // вернуть!
-
+        return mainController.execute(mode, parameters);
     }
 }
 

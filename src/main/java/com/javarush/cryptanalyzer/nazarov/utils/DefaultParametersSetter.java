@@ -9,9 +9,9 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.ON
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.THREE;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.TWO;
 
-public class DefaultParametersGetter {
+public class DefaultParametersSetter {
 
-    public static String getDefaultFirstPath(String mode){
+    public static String setDefaultFirstPath(String mode){
         return switch (mode) {
             case ONE -> INPUT_TXT;
             case TWO, THREE, FOUR -> ENCODED_TXT;
@@ -19,7 +19,7 @@ public class DefaultParametersGetter {
         };
     }
 
-    public static String getDefaultSecondPath(String mode){
+    public static String setDefaultSecondPath(String mode){
         return switch (mode) {
             case ONE -> ENCODED_TXT;
             case TWO, THREE, FOUR -> DECODED_TXT;

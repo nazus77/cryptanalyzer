@@ -11,13 +11,14 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.FO
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.ONE;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.TWO;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.ZERO;
-import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersGetter.getDefaultFirstPath;
-import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersGetter.getDefaultSecondPath;
+import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersSetter.setDefaultFirstPath;
+import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersSetter.setDefaultSecondPath;
 import static com.javarush.cryptanalyzer.nazarov.utils.DictionaryGetter.getDictionary;
 import static com.javarush.cryptanalyzer.nazarov.utils.KeyGetter.getKey;
 import static com.javarush.cryptanalyzer.nazarov.utils.ModeValidator.modeIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.firstPathIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.secondPathIsOk;
+import static com.javarush.cryptanalyzer.nazarov.utils.SelectModePrinter.selectModePrint;
 
 public class ConsoleView implements View {
     @Override
@@ -25,9 +26,8 @@ public class ConsoleView implements View {
 
         String[] args = new String[4];
         String mode, firstPath, secondPath, key;
-        //selectModePrint();
+        selectModePrint();
         Scanner console = new Scanner(System.in);
-
 
         mode = console.next();
         while (!modeIsOk(mode)) {
@@ -37,11 +37,11 @@ public class ConsoleView implements View {
         args[0] = mode;
 
 
-        System.out.println(SOURCE_PATH_REQUEST + getDefaultFirstPath(mode) + DEFAULT_PATH_DESCRIPTION);
+        System.out.println(SOURCE_PATH_REQUEST + setDefaultFirstPath(mode) + DEFAULT_PATH_DESCRIPTION);
         firstPath = console.next();
         while (true) {
             if (firstPath.equals(ZERO)) {
-                firstPath = getDefaultFirstPath(mode);
+                firstPath = setDefaultFirstPath(mode);
                 break;
             } else if (!firstPathIsOk(firstPath)) {
                 System.out.println(WRONG_PATH_WARNING);
@@ -53,11 +53,11 @@ public class ConsoleView implements View {
         args[1] = firstPath;
 
 
-        System.out.println(DESTINATION_PATH_REQUEST + getDefaultSecondPath(mode) + DEFAULT_PATH_DESCRIPTION);
+        System.out.println(DESTINATION_PATH_REQUEST + setDefaultSecondPath(mode) + DEFAULT_PATH_DESCRIPTION);
         secondPath = console.next();
         while (true) {
             if (secondPath.equals(ZERO)) {
-                secondPath = getDefaultSecondPath(mode);
+                secondPath = setDefaultSecondPath(mode);
                 break;
             } else if (!secondPathIsOk(firstPath, secondPath)) {
                 System.out.println(WRONG_PATH_WARNING);
@@ -71,7 +71,7 @@ public class ConsoleView implements View {
         args[3] = switch (mode) {
             case ONE, TWO -> getKey(console);
             case FOUR -> getDictionary(console);
-            default -> ZERO;                        // тройка (брутфорс) подпадает под дефолт
+            default -> ZERO;                    // цифра 3 (режим - брутфорс) подпадает под дефолт
         };
         console.close();
         return args;
