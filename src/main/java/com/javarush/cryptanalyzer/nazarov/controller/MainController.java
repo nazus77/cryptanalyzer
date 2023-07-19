@@ -7,7 +7,7 @@ import com.javarush.cryptanalyzer.nazarov.service.Action;
 import com.javarush.cryptanalyzer.nazarov.view.View;
 
 import static com.javarush.cryptanalyzer.nazarov.constants.ActionIncubatorConstants.*;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.*;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.*;
 
 public class MainController {
     View view;

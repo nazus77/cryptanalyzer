@@ -4,10 +4,10 @@ import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstant
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.EMPTY_STRING;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.ENCODED_TXT;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.INPUT_TXT;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.FOUR;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.ONE;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.THREE;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.TWO;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.FOUR;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ONE;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.THREE;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.TWO;
 
 public class DefaultParametersSetter {
 

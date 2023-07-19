@@ -9,7 +9,7 @@ import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstant
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.DICTIONARY_REQUIREMENTS;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.TXT_EXTENSION;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.WRONG_PATH_WARNING;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.ZERO;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
 
 public class DictionaryGetter {
 
@@ -24,7 +24,6 @@ public class DictionaryGetter {
                 dictionary = console.next();
             } else return dictionary;
         }
-        // return dictionary; // это временное, удалить потом
     }
 
     private static boolean dictionaryIsOk(String dictionary) {

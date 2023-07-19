@@ -7,14 +7,14 @@ import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstant
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.DESTINATION_PATH_REQUEST;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.SOURCE_PATH_REQUEST;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.WRONG_PATH_WARNING;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.FOUR;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.ONE;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.TWO;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericalConstants.ZERO;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.FOUR;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ONE;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.TWO;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersSetter.setDefaultFirstPath;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersSetter.setDefaultSecondPath;
 import static com.javarush.cryptanalyzer.nazarov.utils.DictionaryGetter.getDictionary;
-import static com.javarush.cryptanalyzer.nazarov.utils.KeyGetter.getKey;
+import static com.javarush.cryptanalyzer.nazarov.utils.KeyGetter.setKey;
 import static com.javarush.cryptanalyzer.nazarov.utils.ModeValidator.modeIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.firstPathIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.secondPathIsOk;
@@ -69,9 +69,9 @@ public class ConsoleView implements View {
         args[2] = secondPath;
 
         args[3] = switch (mode) {
-            case ONE, TWO -> getKey(console);
+            case ONE, TWO -> setKey(console);
             case FOUR -> getDictionary(console);
-            default -> ZERO;                    // цифра 3 (режим - брутфорс) подпадает под дефолт
+            default -> ZERO;
         };
         console.close();
         return args;

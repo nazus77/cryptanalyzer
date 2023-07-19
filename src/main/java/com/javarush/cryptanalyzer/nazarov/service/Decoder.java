@@ -8,7 +8,9 @@ public class Decoder implements Action {
 
     @Override
     public Result execute(String[] parameters) {
-       //TODO написать логику
+
+        //TODO
+
         return null;
 
     }

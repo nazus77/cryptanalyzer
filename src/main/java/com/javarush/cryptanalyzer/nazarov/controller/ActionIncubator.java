@@ -6,14 +6,10 @@ import com.javarush.cryptanalyzer.nazarov.service.Encoder;
 
 public enum ActionIncubator {
 
-    // Энамовский класс - фабрика команд.
-    // Более верно - использовать Map.
-    // Можно также использовать аннотации
-
     ENCODE(new Encoder()),
     DECODE(new Decoder());
 
-    // добавляем поле для имплементаций Action и кастомный конструктор.
+    // поле для имплементаций интерфейса Action + кастомный конструктор
     private final Action action;
 
     ActionIncubator(Action action) {

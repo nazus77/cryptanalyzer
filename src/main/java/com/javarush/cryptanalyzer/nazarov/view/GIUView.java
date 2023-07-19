@@ -2,8 +2,6 @@ package com.javarush.cryptanalyzer.nazarov.view;
 
 public class GIUView implements View{
 
-
-
     @Override
     public String[] getArgs() {
 
