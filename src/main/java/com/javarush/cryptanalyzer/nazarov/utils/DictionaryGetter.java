@@ -13,7 +13,7 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO
 
 public class DictionaryGetter {
 
-    public static String getDictionary(Scanner console) {
+    public static String setDictionary(Scanner console) {
         System.out.println(DICTIONARY_REQUEST + DICTIONARY_REQUIREMENTS);
         String dictionary = console.next();
         while (true) {

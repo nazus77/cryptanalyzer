@@ -2,6 +2,8 @@ package com.javarush.cryptanalyzer.nazarov.utils;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static com.javarush.cryptanalyzer.nazarov.constants.CryptoAlphabet.ALPHABET;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.KEY_REQUEST;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.WRONG_KEY_WARNING;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
@@ -20,20 +22,20 @@ public class KeyGetter {
                 System.out.println(WRONG_KEY_WARNING);
                 key = console.next();
             } else {
-                return key;
+                return String.valueOf(Integer.parseInt(key) % ALPHABET.length);
             }
         }
     }
 
-    public static boolean keyIsOk(String key) {
+    private static boolean keyIsOk(String key) {
         if (key.length() < 1 || key.length() > 4) {
             return false;
         } else if (!isDigit(key)) {
             return false;
-        } else if (isDigit(key) && Integer.parseInt(key) % 83 == 0) {
+        } else if (isDigit(key) && Integer.parseInt(key) % ALPHABET.length == 0) {
             return false;
         }
-        return ((Integer.parseInt(key) >= 0 && Integer.parseInt(key) < 1000) && Integer.parseInt(key) == 83);
+        return ((Integer.parseInt(key) >= 0 && Integer.parseInt(key) < 1000) && Integer.parseInt(key) == ALPHABET.length);
     }
 
     private static boolean isDigit(String key) {
@@ -49,8 +51,8 @@ public class KeyGetter {
         int key;
         do {
             key = ThreadLocalRandom.current().nextInt(1, 1000);
-        } while (key % 83 == 0);
-        return String.valueOf(key);
+        } while (key % ALPHABET.length == 0);
+        return String.valueOf(key % ALPHABET.length);
     }
 }
 

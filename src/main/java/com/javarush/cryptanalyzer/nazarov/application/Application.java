@@ -13,7 +13,7 @@ public class Application {
 
     public Result run() { // вернуть возвращаемый тип - Result
 
-        String[] args = new String[]{"1", "input.txt", "decoded.txt", "3"};// это временный архив для тестирования
+        String[] args = new String[]{"1", "input.txt", "decoded.txt", "3"}; // это временный архив для тестирования
         // String[] args = mainController.getView().getArgs(); раскомментировать после тестирования
         String mode = args[0];
         String[] parameters = Arrays.copyOfRange(args, 1, args.length);
@@ -21,7 +21,3 @@ public class Application {
         return mainController.execute(mode, parameters);
     }
 }
-
-
-
-

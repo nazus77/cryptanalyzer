@@ -13,7 +13,7 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.TWO;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersSetter.setDefaultFirstPath;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersSetter.setDefaultSecondPath;
-import static com.javarush.cryptanalyzer.nazarov.utils.DictionaryGetter.getDictionary;
+import static com.javarush.cryptanalyzer.nazarov.utils.DictionaryGetter.setDictionary;
 import static com.javarush.cryptanalyzer.nazarov.utils.KeyGetter.setKey;
 import static com.javarush.cryptanalyzer.nazarov.utils.ModeValidator.modeIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.firstPathIsOk;
@@ -70,7 +70,7 @@ public class ConsoleView implements View {
 
         args[3] = switch (mode) {
             case ONE, TWO -> setKey(console);
-            case FOUR -> getDictionary(console);
+            case FOUR -> setDictionary(console);
             default -> ZERO;
         };
         console.close();
