@@ -11,10 +11,10 @@ public class Application {
         this.mainController = mainController;
     }
 
-    public Result run() { // вернуть возвращаемый тип - Result
+    public Result run() {
 
-        String[] args = new String[]{"1", "input.txt", "decoded.txt", "3"}; // это временный архив для тестирования
-        // String[] args = mainController.getView().getArgs(); раскомментировать после тестирования
+        String[] args = new String[]{"2", "encoded.txt", "decoded.txt", "1"}; // temp data
+        // String[] args = mainController.getView().getArgs(); // return
         String mode = args[0];
         String[] parameters = Arrays.copyOfRange(args, 1, args.length);
 

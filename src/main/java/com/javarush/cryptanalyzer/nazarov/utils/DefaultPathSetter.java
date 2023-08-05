@@ -9,7 +9,7 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ONE;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.THREE;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.TWO;
 
-public class DefaultParametersSetter {
+public class DefaultPathSetter {
 
     public static String setDefaultFirstPath(String mode){
         return switch (mode) {

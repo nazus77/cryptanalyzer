@@ -11,8 +11,8 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.FOUR
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ONE;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.TWO;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
-import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersSetter.setDefaultFirstPath;
-import static com.javarush.cryptanalyzer.nazarov.utils.DefaultParametersSetter.setDefaultSecondPath;
+import static com.javarush.cryptanalyzer.nazarov.utils.DefaultPathSetter.setDefaultFirstPath;
+import static com.javarush.cryptanalyzer.nazarov.utils.DefaultPathSetter.setDefaultSecondPath;
 import static com.javarush.cryptanalyzer.nazarov.utils.DictionaryGetter.setDictionary;
 import static com.javarush.cryptanalyzer.nazarov.utils.KeyGetter.setKey;
 import static com.javarush.cryptanalyzer.nazarov.utils.ModeValidator.modeIsOk;
@@ -25,7 +25,7 @@ public class ConsoleView implements View {
     public String[] getArgs() {
 
         String[] args = new String[4];
-        String mode, firstPath, secondPath, key;
+        String mode, firstPath, secondPath;
         selectModePrint();
         Scanner console = new Scanner(System.in);
 
@@ -73,6 +73,7 @@ public class ConsoleView implements View {
             case FOUR -> setDictionary(console);
             default -> ZERO;
         };
+
         console.close();
         return args;
     }
