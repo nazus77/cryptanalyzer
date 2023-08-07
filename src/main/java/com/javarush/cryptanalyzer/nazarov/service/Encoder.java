@@ -20,22 +20,22 @@ public class Encoder implements Action {
 
         String inputFile = parameters[0], encodedFile = parameters[1], valueOfKey = parameters[2];
         int key = Integer.parseInt(valueOfKey);
-        char souceChar, convertedChar;
+        char souceChar, encodedChar;
 
         try (Reader reader = new FileReader(inputFile);
              Writer writer = new FileWriter(encodedFile)
         ) {
             while (reader.ready()) {
                 souceChar = (char) reader.read();
-                convertedChar = souceChar;
+                encodedChar = souceChar;
 
                 for (int i = 0; i < ALPHABET.length; i++) {
                     if (souceChar == ALPHABET[i]) {
                         int newPosition = i + key >= ALPHABET.length ? i + key - ALPHABET.length : i + key;
-                        convertedChar = ALPHABET[newPosition];
+                        encodedChar = ALPHABET[newPosition];
                     }
                 }
-                writer.write(convertedChar);
+                writer.write(encodedChar);
             }
         } catch (IOException io) {
             throw new AppException(io.getMessage());

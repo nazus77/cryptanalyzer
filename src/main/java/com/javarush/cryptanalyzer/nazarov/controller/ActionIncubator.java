@@ -1,13 +1,13 @@
 package com.javarush.cryptanalyzer.nazarov.controller;
 
-import com.javarush.cryptanalyzer.nazarov.service.Action;
-import com.javarush.cryptanalyzer.nazarov.service.Decoder;
-import com.javarush.cryptanalyzer.nazarov.service.Encoder;
+import com.javarush.cryptanalyzer.nazarov.service.*;
 
 public enum ActionIncubator {
 
     ENCODE(new Encoder()),
-    DECODE(new Decoder());
+    DECODE(new Decoder()),
+    BRUTEFORCEANALYSYS(new BruteForceAnalyzer()),
+    STATYSTICALANALISYS(new StatysticalAnalizer());
 
     // поле для имплементаций интерфейса Action + кастомный конструктор
     private final Action action;
