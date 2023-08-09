@@ -19,7 +19,7 @@ public class KeyGetter {
             if (key.equals(ZERO)) {
                 return randomKeyGenerator();
             } else if (!keyIsOk(key)) {
-                System.out.println(WRONG_KEY_WARNING);
+                System.out.println(WRONG_KEY_WARNING + KEY_REQUEST);
                 key = console.next();
             } else {
                 return String.valueOf(Integer.parseInt(key) % ALPHABET.length);
@@ -30,12 +30,15 @@ public class KeyGetter {
     private static boolean keyIsOk(String key) {
         if (key.length() < 1 || key.length() > 4) {
             return false;
-        } else if (!isDigit(key)) {
-            return false;
-        } else if (isDigit(key) && Integer.parseInt(key) % ALPHABET.length == 0) {
+        }
+        if (!isDigit(key)) {
             return false;
         }
-        return ((Integer.parseInt(key) >= 0 && Integer.parseInt(key) < 1000) && Integer.parseInt(key) == ALPHABET.length);
+        int value = Integer.parseInt(key);
+        if (value % ALPHABET.length == 0) {
+            return false;
+        }
+        return (value >= 0 && value <= 1000);
     }
 
     private static boolean isDigit(String key) {

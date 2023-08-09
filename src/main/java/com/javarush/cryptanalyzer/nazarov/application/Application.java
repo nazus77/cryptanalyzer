@@ -1,6 +1,8 @@
 package com.javarush.cryptanalyzer.nazarov.application;
+
 import com.javarush.cryptanalyzer.nazarov.controller.MainController;
 import com.javarush.cryptanalyzer.nazarov.entity.Result;
+
 import java.util.Arrays;
 
 public class Application {
@@ -13,8 +15,8 @@ public class Application {
 
     public Result run() {
 
-        String[] args = new String[]{"2", "encoded.txt", "decoded.txt", "1"}; // temp data
-        // String[] args = mainController.getView().getArgs(); // return
+//        String[] args = new String[]{"3", "encoded.txt", "decoded(brute force).txt", "0"}; // temp data
+        String[] args = mainController.getView().getArgs();
         String mode = args[0];
         String[] parameters = Arrays.copyOfRange(args, 1, args.length);
 
