@@ -2,15 +2,11 @@ package com.javarush.cryptanalyzer.nazarov.service;
 
 import com.javarush.cryptanalyzer.nazarov.entity.Result;
 import com.javarush.cryptanalyzer.nazarov.entity.ResultCode;
-import com.javarush.cryptanalyzer.nazarov.exception.AppException;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
+import static com.javarush.cryptanalyzer.nazarov.constants.ActionsConstants.ENCODER_ERROR;
+import static com.javarush.cryptanalyzer.nazarov.constants.ActionsConstants.FILE_ENCODED;
 import static com.javarush.cryptanalyzer.nazarov.constants.CryptoAlphabet.ALPHABET;
 
 public class Encoder implements Action {
@@ -31,15 +27,15 @@ public class Encoder implements Action {
 
                 for (int i = 0; i < ALPHABET.length; i++) {
                     if (souceChar == ALPHABET[i]) {
-                        int newPosition = i + key >= ALPHABET.length ? i + key - ALPHABET.length : i + key;
-                        encodedChar = ALPHABET[newPosition];
+                        int newIndex = i + key >= ALPHABET.length ? i + key - ALPHABET.length : i + key;
+                        encodedChar = ALPHABET[newIndex];
                     }
                 }
                 writer.write(encodedChar);
             }
         } catch (IOException io) {
-            throw new AppException(io.getMessage());
+            return new Result(ResultCode.ERROR, ENCODER_ERROR);
         }
-        return new Result(ResultCode.OK, "File encoded (encoded.txt)");
+        return new Result(ResultCode.OK, FILE_ENCODED);
     }
 }

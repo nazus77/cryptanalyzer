@@ -2,10 +2,11 @@ package com.javarush.cryptanalyzer.nazarov.service;
 
 import com.javarush.cryptanalyzer.nazarov.entity.Result;
 import com.javarush.cryptanalyzer.nazarov.entity.ResultCode;
-import com.javarush.cryptanalyzer.nazarov.exception.AppException;
 
 import java.io.*;
 
+import static com.javarush.cryptanalyzer.nazarov.constants.ActionsConstants.DECODER_ERROR;
+import static com.javarush.cryptanalyzer.nazarov.constants.ActionsConstants.FILE_DECODED;
 import static com.javarush.cryptanalyzer.nazarov.constants.CryptoAlphabet.ALPHABET;
 
 public class Decoder implements Action {
@@ -22,20 +23,20 @@ public class Decoder implements Action {
         ) {
             while (reader.ready()) {
                 encodedChar = (char) reader.read();
-                decodedChar = encodedChar; // вот тут подумать, если инглиш! добавить алфавит мб в енкодер?
+                decodedChar = encodedChar;
 
                 for (int i = 0; i < ALPHABET.length; i++) {
                     if (encodedChar == ALPHABET[i]) {
-                        int newPosition = i - key < 0? i - key + ALPHABET.length : i - key;
-                        decodedChar = ALPHABET[newPosition];
+                        int newIndex = i - key < 0 ? i - key + ALPHABET.length : i - key;
+                        decodedChar = ALPHABET[newIndex];
                     }
                 }
                 writer.write(decodedChar);
             }
         } catch (IOException io) {
-            throw new AppException(io.getMessage());
+            return new Result(ResultCode.ERROR, DECODER_ERROR);
         }
-        return new Result(ResultCode.OK, "File decoded (decoded.txt)");
+        return new Result(ResultCode.OK, FILE_DECODED);
 
     }
 }

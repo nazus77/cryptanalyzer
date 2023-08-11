@@ -6,8 +6,8 @@ public enum ActionIncubator {
 
     ENCODE(new Encoder()),
     DECODE(new Decoder()),
-    BRUTEFORCEANALYSER(new BruteForceAnalyzer()),
-    STATYSTICALANALYSER(new StatysticalAnalizer());
+    BRUTEFORCEANALYZER(new BruteForceAnalyzer()),
+    STATISTICALANALYZER(new StatisticalAnalyzer());
 
     // поле для имплементаций интерфейса Action + кастомный конструктор
     private final Action action;

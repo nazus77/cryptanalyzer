@@ -15,11 +15,13 @@ public class Application {
 
     public Result run() {
 
-//        String[] args = new String[]{"3", "encoded.txt", "decoded(brute force).txt", "0"}; // temp data
         String[] args = mainController.getView().getArgs();
         String mode = args[0];
         String[] parameters = Arrays.copyOfRange(args, 1, args.length);
-
         return mainController.execute(mode, parameters);
+    }
+
+    public static void resultPrinter(Result result) {
+        System.out.println(result.getMessage());
     }
 }

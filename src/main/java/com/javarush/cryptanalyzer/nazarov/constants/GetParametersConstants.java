@@ -17,7 +17,7 @@ public class GetParametersConstants {
     public static final String WRONG_KEY_WARNING = "You have entered an incorrect key.\n";
     public static final String EMPTY_STRING = "";
     public static final String TXT_EXTENSION = ".txt";
-    public static final String DICTIONARY = "dictoinary.txt";
+    public static final String DICTIONARY = "dictionary.txt";
     public static final String DICTIONARY_REQUEST = "Please enter dictionary full path or enter \"0\" to use dictionary.txt" + DEFAULT_PATH_DESCRIPTION;
     public static final String DICTIONARY_REQUIREMENTS = "\nThe dictionary must have '.txt' extension and must include the text of the same author\nand in the same style as the source text before its encryption";
     private GetParametersConstants() {

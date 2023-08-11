@@ -24,21 +24,18 @@ public class MainController {
             Action action = getAction(mode);
             return action.execute(parameters);
         } catch (RuntimeException e) {
-            return new Result(ResultCode.ERROR, e.getMessage()); // указать сообщение
+            return new Result(ResultCode.ERROR, e.getMessage());
         }
     }
 
     public Action getAction(String mode) {
         return switch (mode) {
 
-            // используем спец.метод Enum - valueOf, чтобы получить объект энама
-            // и геттер для получения обекта, который мы положили в Enum
-
             case ONE -> ActionIncubator.valueOf(ENCODER).getActionIncubatorValue();
             case TWO -> ActionIncubator.valueOf(DECODER).getActionIncubatorValue();
             case THREE -> ActionIncubator.valueOf(BRUTEFORCEANALYZER).getActionIncubatorValue();
-            case FOUR -> ActionIncubator.valueOf(STATYSTICALANALYZER).getActionIncubatorValue();
-            default -> throw new AppException(); // вот тут еще можно подумать
+            case FOUR -> ActionIncubator.valueOf(STATISTICALANALYZER).getActionIncubatorValue();
+            default -> throw new AppException();
         };
     }
 }

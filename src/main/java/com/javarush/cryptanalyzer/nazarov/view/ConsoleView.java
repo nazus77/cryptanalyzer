@@ -26,7 +26,7 @@ public class ConsoleView implements View {
 
         String[] args = new String[4];
         String mode, firstPath, secondPath;
-        // selectModePrint();
+        selectModePrint();
         Scanner console = new Scanner(System.in);
 
         mode = console.next();

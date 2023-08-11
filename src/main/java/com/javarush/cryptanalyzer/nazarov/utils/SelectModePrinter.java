@@ -7,15 +7,15 @@ public class SelectModePrinter {
     public static void selectModePrint() {
         try {
             System.out.println(WELCOME);
-            Thread.sleep(500);
+            Thread.sleep(350);
             System.out.println(MODE_SELECT_1);
-            Thread.sleep(500);
+            Thread.sleep(350);
             System.out.println(MODE_SELECT_2);
-            Thread.sleep(500);
+            Thread.sleep(350);
             System.out.println(MODE_SELECT_3);
-            Thread.sleep(500);
+            Thread.sleep(350);
             System.out.println(MODE_SELECT_4);
-            Thread.sleep(500);
+            Thread.sleep(350);
             System.out.println(MODE_SELECT_0);
         } catch (InterruptedException e) {
             throw new AppException(e);
