@@ -13,7 +13,7 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.TWO;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultPathSetter.setDefaultFirstPath;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultPathSetter.setDefaultSecondPath;
-import static com.javarush.cryptanalyzer.nazarov.utils.DictionaryGetter.setDictionary;
+import static com.javarush.cryptanalyzer.nazarov.utils.DictionarySetter.setDictionary;
 import static com.javarush.cryptanalyzer.nazarov.utils.KeyGetter.setKey;
 import static com.javarush.cryptanalyzer.nazarov.utils.ModeValidator.modeIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.firstPathIsOk;

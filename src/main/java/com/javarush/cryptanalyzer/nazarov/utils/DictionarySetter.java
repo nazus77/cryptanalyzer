@@ -11,14 +11,14 @@ import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstant
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.WRONG_PATH_WARNING;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
 
-public class DictionaryGetter {
+public class DictionarySetter {
 
     public static String setDictionary(Scanner console) {
         System.out.println(DICTIONARY_REQUEST + DICTIONARY_REQUIREMENTS);
         String dictionary = console.next();
         while (true) {
             if (dictionary.equals(ZERO)) {
-                dictionary = DICTIONARY;
+                return DICTIONARY;
             } else if (!dictionaryIsOk(dictionary)) {
                 System.out.println(WRONG_PATH_WARNING);
                 dictionary = console.next();
