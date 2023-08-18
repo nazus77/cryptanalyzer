@@ -25,6 +25,8 @@ public class StatisticalAnalyzer implements Action {
         try (BufferedReader bufferedReader1 = new BufferedReader(new FileReader(encodedFile));
              BufferedReader bufferedReader2 = new BufferedReader(new FileReader(dictionary))) {
 
+
+            // ОБРАБАТЫВАЕМ ЗАКОДИРОВАННЫЙ ТЕКСТ
             while (bufferedReader1.ready()) {
                 stringBuilder1.append(bufferedReader1.readLine()).append('\n');
             }
@@ -32,16 +34,7 @@ public class StatisticalAnalyzer implements Action {
                 encodedTextStat.put(stringBuilder1.charAt(i), getStat(stringBuilder1.charAt(i), stringBuilder1));
             }
 
-            // РАСПЕЧАТКА СТАТИСТИКИ ПО ЗАКОДИРОВАННОМУ ТЕКСТУ. ПОТОМ УДАЛИТЬ
-            double sum1 = 0.0;
-            for (var entry : encodedTextStat.entrySet()) {
-                System.out.print(entry.getKey() + " = ");
-                System.out.println(entry.getValue());
-                sum1 += entry.getValue();
-            }
-            System.out.println(sum1);
-
-
+            // ОБРАБАТЫВАЕМ СЛОВАРЬ
             while (bufferedReader2.ready()) {
                 stringBuilder2.append(bufferedReader2.readLine()).append('\n');
             }
@@ -50,7 +43,20 @@ public class StatisticalAnalyzer implements Action {
             }
 
 
+
+
+
+
+            /*
             // РАСПЕЧАТКА СТАТИСТИКИ ПО ЗАКОДИРОВАННОМУ ТЕКСТУ. ПОТОМ УДАЛИТЬ
+            double sum1 = 0.0;
+            for (var entry : encodedTextStat.entrySet()) {
+                System.out.print(entry.getKey() + " = ");
+                System.out.println(entry.getValue());
+                sum1 += entry.getValue();
+            }
+            System.out.println(sum1);
+            // РАСПЕЧАТКА СТАТИСТИКИ ПО СЛОВАРЮ. ПОТОМ УДАЛИТЬ
             double sum2 = 0.0;
             for (var entry : dictionaryStat.entrySet()) {
                 System.out.print(entry.getKey() + " = ");
@@ -58,6 +64,7 @@ public class StatisticalAnalyzer implements Action {
                 sum2 += entry.getValue();
             }
             System.out.println(sum2);
+            */
 
 
         } catch (IOException e) {
