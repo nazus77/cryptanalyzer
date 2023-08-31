@@ -4,11 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.DICTIONARY;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.DICTIONARY_REQUEST;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.DICTIONARY_REQUIREMENTS;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.TXT_EXTENSION;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.WRONG_PATH_WARNING;
+import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.*;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
 
 public class DictionarySetter {

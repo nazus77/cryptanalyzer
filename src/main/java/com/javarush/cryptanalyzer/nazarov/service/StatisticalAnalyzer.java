@@ -2,16 +2,15 @@ package com.javarush.cryptanalyzer.nazarov.service;
 
 import com.javarush.cryptanalyzer.nazarov.entity.Result;
 import com.javarush.cryptanalyzer.nazarov.entity.ResultCode;
-import com.javarush.cryptanalyzer.nazarov.exception.AppException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.javarush.cryptanalyzer.nazarov.constants.ActionsConstants.STAT_ANALYSIS_FINISHED;
-import static com.javarush.cryptanalyzer.nazarov.constants.ActionsConstants.STAT_ANALYZER_ERROR;
+import static com.javarush.cryptanalyzer.nazarov.constants.ActionsConstants.*;
 
 public class StatisticalAnalyzer implements Action {
     @Override
@@ -19,69 +18,45 @@ public class StatisticalAnalyzer implements Action {
 
         String encodedFile = parameters[0], decodedFile = parameters[1], dictionary = parameters[2];
         Map<Character, Double> encodedTextStat = new HashMap<>(), dictionaryStat = new HashMap<>();
-
-        StringBuilder stringBuilder1 = new StringBuilder(), stringBuilder2 = new StringBuilder();
+        StringBuilder encodedText = new StringBuilder(), dictionaryText = new StringBuilder();
+        System.out.println(PLEASE_WAIT);
 
         try (BufferedReader bufferedReader1 = new BufferedReader(new FileReader(encodedFile));
-             BufferedReader bufferedReader2 = new BufferedReader(new FileReader(dictionary))) {
+             BufferedReader bufferedReader2 = new BufferedReader(new FileReader(dictionary));
+             FileWriter fileWriter = new FileWriter(decodedFile)) {
 
-
-            // ОБРАБАТЫВАЕМ ЗАКОДИРОВАННЫЙ ТЕКСТ
             while (bufferedReader1.ready()) {
-                stringBuilder1.append(bufferedReader1.readLine()).append('\n');
+                encodedText.append(bufferedReader1.readLine()).append('\n');
             }
-            for (int i = 0; i < stringBuilder1.length(); i++) {
-                encodedTextStat.put(stringBuilder1.charAt(i), getStat(stringBuilder1.charAt(i), stringBuilder1));
+            for (int i = 0; i < encodedText.length(); i++) {
+                encodedTextStat.put(encodedText.charAt(i), getStat(encodedText.charAt(i), encodedText));
             }
 
-            // ОБРАБАТЫВАЕМ СЛОВАРЬ
             while (bufferedReader2.ready()) {
-                stringBuilder2.append(bufferedReader2.readLine()).append('\n');
+                dictionaryText.append(bufferedReader2.readLine()).append('\n');
             }
-            for (int i = 0; i < stringBuilder2.length(); i++) {
-                dictionaryStat.put(stringBuilder2.charAt(i), getStat(stringBuilder2.charAt(i), stringBuilder2));
+            for (int i = 0; i < dictionaryText.length(); i++) {
+                dictionaryStat.put(dictionaryText.charAt(i), getStat(dictionaryText.charAt(i), dictionaryText));
             }
 
+            StringBuilder finalText = new StringBuilder();
+            finalText.append(encodedText);
 
-
-
-
-
-            /*
-            // РАСПЕЧАТКА СТАТИСТИКИ ПО ЗАКОДИРОВАННОМУ ТЕКСТУ. ПОТОМ УДАЛИТЬ
-            double sum1 = 0.0;
             for (var entry : encodedTextStat.entrySet()) {
-                System.out.print(entry.getKey() + " = ");
-                System.out.println(entry.getValue());
-                sum1 += entry.getValue();
+                for (int i = 0; i < encodedText.length(); i++) {
+                    if (entry.getKey() == encodedText.charAt(i)) {
+                        finalText.setCharAt(i, getReplacedChar(entry.getValue(), dictionaryStat));
+                    }
+                }
             }
-            System.out.println(sum1);
-            // РАСПЕЧАТКА СТАТИСТИКИ ПО СЛОВАРЮ. ПОТОМ УДАЛИТЬ
-            double sum2 = 0.0;
-            for (var entry : dictionaryStat.entrySet()) {
-                System.out.print(entry.getKey() + " = ");
-                System.out.println(entry.getValue());
-                sum2 += entry.getValue();
-            }
-            System.out.println(sum2);
-            */
-
+            fileWriter.write(finalText.toString());
 
         } catch (IOException e) {
             return new Result(ResultCode.ERROR, STAT_ANALYZER_ERROR);
         }
 
-
-
-
-        //TODO: finalize statistic analysis
-
-
-
-
         return new Result(ResultCode.OK, STAT_ANALYSIS_FINISHED);
     }
-
 
     private static Double getStat(Character character, StringBuilder stringBuilder) {
         int counter = 0;
@@ -90,6 +65,49 @@ public class StatisticalAnalyzer implements Action {
                 counter += 1;
             }
         }
-        return (counter / (double) stringBuilder.length()) * 100;
+        return ((counter / (double) stringBuilder.length()) * 100);
     }
+
+    private static char getReplacedChar(Double stat, Map<Character, Double> dictionaryStat) {
+        char replacedChar = ' ';
+        double minDifference = Double.MAX_VALUE, currentDifference;
+
+        for (var entry : dictionaryStat.entrySet()) {
+            if (Double.max(stat, entry.getValue()) == stat) {
+                currentDifference = stat - entry.getValue();
+            } else {
+                currentDifference = entry.getValue() - stat;
+            }
+
+            if (currentDifference < minDifference) {
+                minDifference = currentDifference;
+                replacedChar = entry.getKey();
+            }
+        }
+
+        return replacedChar;
+    }
+
 }
+
+/*
+// encodedText print stats
+            double sum1 = 0.0;
+            for (var entry : encodedTextStat.entrySet()) {
+                System.out.print(entry.getKey() + " = ");
+                System.out.println(entry.getValue());
+                sum1 += entry.getValue();
+            }
+            System.out.println(sum1);
+
+// dictionary print stats
+            double sum2 = 0.0;
+            for (var entry : dictionaryStat.entrySet()) {
+                System.out.print(entry.getKey() + " = ");
+                System.out.println(entry.getValue());
+                sum2 += entry.getValue();
+            }
+            System.out.println(sum2);
+ */
+
+

@@ -8,7 +8,7 @@ import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstant
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.WRONG_KEY_WARNING;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
 
-public class KeyGetter {
+public class KeySetter {
 
     public static String setKey(Scanner console) {
 

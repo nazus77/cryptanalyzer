@@ -1,10 +1,7 @@
 package com.javarush.cryptanalyzer.nazarov.utils;
 
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.*;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.FOUR;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ONE;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.THREE;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.TWO;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.*;
 
 public class DefaultPathSetter {
 

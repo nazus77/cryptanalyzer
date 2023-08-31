@@ -1,20 +1,15 @@
 package com.javarush.cryptanalyzer.nazarov.view;
 
 import java.util.Scanner;
+
 import static com.javarush.cryptanalyzer.nazarov.constants.GetModeConstants.OFFERED_OPTIONS;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetModeConstants.WRONG_MODE_WARNING;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.DEFAULT_PATH_DESCRIPTION;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.DESTINATION_PATH_REQUEST;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.SOURCE_PATH_REQUEST;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.WRONG_PATH_WARNING;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.FOUR;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ONE;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.TWO;
-import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO;
+import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.*;
+import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.*;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultPathSetter.setDefaultFirstPath;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultPathSetter.setDefaultSecondPath;
 import static com.javarush.cryptanalyzer.nazarov.utils.DictionarySetter.setDictionary;
-import static com.javarush.cryptanalyzer.nazarov.utils.KeyGetter.setKey;
+import static com.javarush.cryptanalyzer.nazarov.utils.KeySetter.setKey;
 import static com.javarush.cryptanalyzer.nazarov.utils.ModeValidator.modeIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.firstPathIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.secondPathIsOk;
@@ -36,7 +31,6 @@ public class ConsoleView implements View {
         }
         args[0] = mode;
 
-
         System.out.println(SOURCE_PATH_REQUEST + setDefaultFirstPath(mode) + DEFAULT_PATH_DESCRIPTION);
         firstPath = console.next();
         while (true) {
@@ -51,7 +45,6 @@ public class ConsoleView implements View {
             }
         }
         args[1] = firstPath;
-
 
         System.out.println(DESTINATION_PATH_REQUEST + setDefaultSecondPath(mode) + DEFAULT_PATH_DESCRIPTION);
         secondPath = console.next();
