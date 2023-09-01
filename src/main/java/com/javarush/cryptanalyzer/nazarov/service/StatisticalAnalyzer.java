@@ -28,6 +28,10 @@ public class StatisticalAnalyzer implements Action {
             while (bufferedReader1.ready()) {
                 encodedText.append(bufferedReader1.readLine()).append('\n');
             }
+            String encodedTextString = encodedText.toString();
+            encodedText.setLength(0);
+            encodedText.append(encodedTextString.toLowerCase());
+
             for (int i = 0; i < encodedText.length(); i++) {
                 encodedTextStat.put(encodedText.charAt(i), getStat(encodedText.charAt(i), encodedText));
             }
@@ -35,6 +39,11 @@ public class StatisticalAnalyzer implements Action {
             while (bufferedReader2.ready()) {
                 dictionaryText.append(bufferedReader2.readLine()).append('\n');
             }
+
+            String dictionaryString = dictionaryText.toString();
+            dictionaryText.setLength(0);
+            dictionaryText.append(dictionaryString.toLowerCase());
+
             for (int i = 0; i < dictionaryText.length(); i++) {
                 dictionaryStat.put(dictionaryText.charAt(i), getStat(dictionaryText.charAt(i), dictionaryText));
             }
@@ -54,7 +63,6 @@ public class StatisticalAnalyzer implements Action {
         } catch (IOException e) {
             return new Result(ResultCode.ERROR, STAT_ANALYZER_ERROR);
         }
-
         return new Result(ResultCode.OK, STAT_ANALYSIS_FINISHED);
     }
 
@@ -84,30 +92,6 @@ public class StatisticalAnalyzer implements Action {
                 replacedChar = entry.getKey();
             }
         }
-
         return replacedChar;
     }
-
 }
-
-/*
-// encodedText print stats
-            double sum1 = 0.0;
-            for (var entry : encodedTextStat.entrySet()) {
-                System.out.print(entry.getKey() + " = ");
-                System.out.println(entry.getValue());
-                sum1 += entry.getValue();
-            }
-            System.out.println(sum1);
-
-// dictionary print stats
-            double sum2 = 0.0;
-            for (var entry : dictionaryStat.entrySet()) {
-                System.out.print(entry.getKey() + " = ");
-                System.out.println(entry.getValue());
-                sum2 += entry.getValue();
-            }
-            System.out.println(sum2);
- */
-
-

@@ -9,7 +9,6 @@ public enum ActionIncubator {
     BRUTEFORCEANALYZER(new BruteForceAnalyzer()),
     STATISTICALANALYZER(new StatisticalAnalyzer());
 
-    // поле для имплементаций интерфейса Action + кастомный конструктор
     private final Action action;
 
     ActionIncubator(Action action) {
