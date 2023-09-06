@@ -1,4 +1,5 @@
 package com.javarush.cryptanalyzer.nazarov;
+
 import com.javarush.cryptanalyzer.nazarov.application.Application;
 import com.javarush.cryptanalyzer.nazarov.controller.MainController;
 import com.javarush.cryptanalyzer.nazarov.entity.Result;

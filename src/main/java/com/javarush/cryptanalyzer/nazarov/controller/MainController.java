@@ -11,9 +11,11 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.*;
 
 public class MainController {
     View view;
+
     public MainController(View view) {
         this.view = view;
     }
+
     public View getView() {
         return view;
     }

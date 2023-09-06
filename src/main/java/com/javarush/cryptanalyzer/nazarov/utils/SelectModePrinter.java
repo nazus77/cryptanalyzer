@@ -1,6 +1,7 @@
 package com.javarush.cryptanalyzer.nazarov.utils;
 
 import com.javarush.cryptanalyzer.nazarov.exception.AppException;
+
 import static com.javarush.cryptanalyzer.nazarov.constants.GetModeConstants.*;
 
 public class SelectModePrinter {

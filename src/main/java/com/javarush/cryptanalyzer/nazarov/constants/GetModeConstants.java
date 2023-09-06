@@ -10,6 +10,7 @@ public class GetModeConstants {
     public static final String WRONG_MODE_WARNING = "You have entered an incorrect character.";
     public static final String OFFERED_OPTIONS = " Please select mode from the offered options.";
     public static final String GOODBYE = "Good bye!";
+
     private GetModeConstants() {
     }
 }
