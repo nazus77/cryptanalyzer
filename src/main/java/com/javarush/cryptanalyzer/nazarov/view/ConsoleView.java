@@ -2,8 +2,8 @@ package com.javarush.cryptanalyzer.nazarov.view;
 
 import java.util.Scanner;
 
+import static com.javarush.cryptanalyzer.nazarov.constants.GetModeConstants.INCORRECT_CHARACTER_WARNING;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetModeConstants.OFFERED_OPTIONS;
-import static com.javarush.cryptanalyzer.nazarov.constants.GetModeConstants.WRONG_MODE_WARNING;
 import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.*;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.*;
 import static com.javarush.cryptanalyzer.nazarov.utils.DefaultPathSetter.setDefaultFirstPath;
@@ -26,7 +26,7 @@ public class ConsoleView implements View {
 
         mode = console.next();
         while (!modeIsOk(mode)) {
-            System.out.println(WRONG_MODE_WARNING + OFFERED_OPTIONS);
+            System.out.println(INCORRECT_CHARACTER_WARNING + OFFERED_OPTIONS);
             mode = console.next();
         }
         args[0] = mode;
@@ -48,11 +48,12 @@ public class ConsoleView implements View {
 
         System.out.println(DESTINATION_PATH_REQUEST + setDefaultSecondPath(mode) + DEFAULT_PATH_DESCRIPTION);
         secondPath = console.next();
+
         while (true) {
             if (secondPath.equals(ZERO)) {
                 secondPath = setDefaultSecondPath(mode);
                 break;
-            } else if (!secondPathIsOk(firstPath, secondPath)) {
+            } else if (!secondPathIsOk(firstPath, secondPath, console)) {
                 System.out.println(WRONG_PATH_WARNING);
                 secondPath = console.next();
             } else {

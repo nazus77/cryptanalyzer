@@ -14,8 +14,8 @@ public class Encoder implements Action {
     @Override
     public Result execute(String[] parameters) {
 
-        String inputFile = parameters[0], encodedFile = parameters[1], valueOfKey = parameters[2];
-        int key = Integer.parseInt(valueOfKey);
+        String inputFile = parameters[0], encodedFile = parameters[1];
+        int key = Integer.parseInt(parameters[2]);
         char souceChar, encodedChar;
 
         try (Reader reader = new FileReader(inputFile);

@@ -2,8 +2,10 @@ package com.javarush.cryptanalyzer.nazarov.utils;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Scanner;
 
-import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.TXT_EXTENSION;
+import static com.javarush.cryptanalyzer.nazarov.constants.GetModeConstants.INCORRECT_CHARACTER_WARNING;
+import static com.javarush.cryptanalyzer.nazarov.constants.GetParametersConstants.*;
 
 public class PathValidator {
 
@@ -13,8 +15,31 @@ public class PathValidator {
         );
     }
 
-    public static boolean secondPathIsOk(String firstPath, String secondPath) {
-        return (((secondPath.length() == 1 && Character.isDigit(secondPath.charAt(0))) && Integer.parseInt(secondPath) == 0)
-                || (!firstPath.equals(secondPath) && Path.of(secondPath).isAbsolute() && Files.isDirectory(Path.of(secondPath))));
+    public static boolean secondPathIsOk(String firstPath, String secondPath, Scanner console) {
+        if (firstPath.equals(secondPath)) {
+            System.out.println(SAME_DESTINATION_WARNING);
+            return false;
+        } else if (Files.isRegularFile(Path.of(secondPath))) {
+            System.out.println(FILE_EXISTS_WARNING + YES_NO);
+            return overWrite(console);
+        } else {
+            return (((firstPath.length() == 1 && Character.isDigit(firstPath.charAt(0))) && Integer.parseInt(firstPath) == 0)
+                    || Path.of(secondPath).isAbsolute()
+                    && firstPath.endsWith(TXT_EXTENSION));
+        }
+    }
+
+    private static boolean overWrite(Scanner console) {
+        String answer;
+        while (true) {
+            answer = console.next();
+            if (answer.equals("1")) {
+                return true;
+            } else if (answer.equals("2")) {
+                return false;
+            } else {
+                System.out.println(INCORRECT_CHARACTER_WARNING + YES_NO);
+            }
+        }
     }
 }
