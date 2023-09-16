@@ -78,19 +78,19 @@ public class StatisticalAnalyzer implements Action {
 
     private static char getReplacedChar(Double stat, Map<Character, Double> dictionaryStat) {
         char replacedChar = ' ';
-        double minDifference = Double.MAX_VALUE, currentDifference;
+        double minDifference = Double.MAX_VALUE;
 
         for (var entry : dictionaryStat.entrySet()) {
-            if (Double.max(stat, entry.getValue()) == stat) {
-                currentDifference = stat - entry.getValue();
-            } else {
-                currentDifference = entry.getValue() - stat;
-            }
-
-            if (currentDifference < minDifference) {
-                minDifference = currentDifference;
+            if (Math.abs(stat - entry.getValue()) < minDifference) {
+                minDifference = Math.abs(stat - entry.getValue());
                 replacedChar = entry.getKey();
             }
+//            if (Double.max(stat, entry.getValue()) == stat) {
+//                currentDifference = stat - entry.getValue();
+//            } else {
+//                currentDifference = entry.getValue() - stat;
+//            }
+
         }
         return replacedChar;
     }
