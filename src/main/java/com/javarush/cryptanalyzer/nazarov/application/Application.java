@@ -4,12 +4,15 @@ import com.javarush.cryptanalyzer.nazarov.controller.MainController;
 import com.javarush.cryptanalyzer.nazarov.entity.Result;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Application {
 
     private final MainController mainController;
+    final Scanner console;
 
-    public Application(MainController mainController) {
+    public Application(Scanner console, MainController mainController) {
+        this.console = console;
         this.mainController = mainController;
     }
 
