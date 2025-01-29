@@ -1,6 +1,6 @@
 package com.javarush.cryptanalyzer.nazarov.constants;
 
-import static com.javarush.cryptanalyzer.nazarov.constants.CryptoAlphabet.ALPHABET;
+import static com.javarush.cryptanalyzer.nazarov.constants.CryptoAlphabet.CHARS_ARRAY;
 
 public class GetParametersConstants {
 
@@ -16,8 +16,8 @@ public class GetParametersConstants {
     public static final String SAME_DESTINATION_WARNING = "The source and target files cannot have the same destination,";
     public static final String FILE_EXISTS_WARNING = "The file is already exists. Do you want to overwrite it?";
     public static final String YES_NO = " (1 - YES, 2 - NO)";
-    public static final String KEY_REQUEST = "Please enter key (an integer from 1 to 1 000, that is not multiple of " + ALPHABET.length + ") or enter \"0\" to use random key";
-    public static final String RANDOM_KEY = "Random key is - ";
+    public static final String KEY_REQUEST = "Please enter key (from -1000 to 1000) or enter \"0\" to use random key";
+    public static final String RANDOM_KEY = "Random key is: ";
     public static final String WRONG_KEY_WARNING = "You have entered an incorrect key\n";
     public static final String EMPTY_STRING = "";
     public static final String TXT_EXTENSION = ".txt";

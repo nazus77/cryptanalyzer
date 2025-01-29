@@ -9,15 +9,15 @@ import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.ZERO
 
 public class DictionarySetter {
 
-    public static String setDictionary(Scanner console) {
+    public static String setDictionary(Scanner scanner) {
         System.out.println(DICTIONARY_REQUEST + DICTIONARY_REQUIREMENTS);
-        String dictionary = console.next();
+        String dictionary = scanner.nextLine();
         while (true) {
             if (dictionary.equals(ZERO)) {
                 return DICTIONARY;
             } else if (!dictionaryIsOk(dictionary)) {
                 System.out.println(WRONG_PATH_WARNING);
-                dictionary = console.next();
+                dictionary = scanner.nextLine();
             } else return dictionary;
         }
     }

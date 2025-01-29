@@ -6,7 +6,7 @@ public class ModeValidator {
 
     public static boolean modeIsOk(String mode) {
 
-        if (!(Character.isDigit(mode.charAt(0)) && mode.length() == 1)) {
+        if (mode.isEmpty() || !(Character.isDigit(mode.charAt(0)) && mode.length() == 1)) {
             return false;
         }
 

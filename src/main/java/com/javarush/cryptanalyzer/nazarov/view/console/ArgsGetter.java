@@ -1,4 +1,4 @@
-package com.javarush.cryptanalyzer.nazarov.view;
+package com.javarush.cryptanalyzer.nazarov.view.console;
 
 import java.util.Scanner;
 
@@ -15,31 +15,32 @@ import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.firstPathIs
 import static com.javarush.cryptanalyzer.nazarov.utils.PathValidator.secondPathIsOk;
 import static com.javarush.cryptanalyzer.nazarov.utils.SelectModePrinter.selectModePrint;
 
-public class ConsoleView implements View {
-    @Override
-    public String[] getArgs() {
+public class ArgsGetter {
+
+    public String[] getArgs(Scanner console) {
 
         String[] args = new String[4];
         String mode, firstPath, secondPath;
         selectModePrint();
-        Scanner console = new Scanner(System.in);
 
-        mode = console.next();
+        mode = console.nextLine();
         while (!modeIsOk(mode)) {
             System.out.println(INCORRECT_CHARACTER_WARNING + OFFERED_OPTIONS);
-            mode = console.next();
+            mode = console.nextLine();
         }
         args[0] = mode;
 
+        // досюда ок. empty String - возвращает false (incorrect input
+
         System.out.println(SOURCE_PATH_REQUEST + setDefaultFirstPath(mode) + DEFAULT_PATH_DESCRIPTION);
-        firstPath = console.next();
+        firstPath = console.nextLine();
         while (true) {
             if (firstPath.equals(ZERO)) {
                 firstPath = setDefaultFirstPath(mode);
                 break;
             } else if (!firstPathIsOk(firstPath)) {
                 System.out.println(WRONG_PATH_WARNING);
-                firstPath = console.next();
+                firstPath = console.nextLine();
             } else {
                 break;
             }
@@ -47,7 +48,7 @@ public class ConsoleView implements View {
         args[1] = firstPath;
 
         System.out.println(DESTINATION_PATH_REQUEST + setDefaultSecondPath(mode) + DEFAULT_PATH_DESCRIPTION);
-        secondPath = console.next();
+        secondPath = console.nextLine();
 
         while (true) {
             if (secondPath.equals(ZERO)) {
@@ -55,7 +56,7 @@ public class ConsoleView implements View {
                 break;
             } else if (!secondPathIsOk(firstPath, secondPath, console)) {
                 System.out.println(WRONG_PATH_WARNING);
-                secondPath = console.next();
+                secondPath = console.nextLine();
             } else {
                 break;
             }

@@ -29,10 +29,10 @@ public class PathValidator {
         }
     }
 
-    private static boolean overWrite(Scanner console) {
+    private static boolean overWrite(Scanner scanner) {
         String answer;
         while (true) {
-            answer = console.next();
+            answer = scanner.next();
             if (answer.equals("1")) {
                 return true;
             } else if (answer.equals("2")) {

@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.javarush.cryptanalyzer.nazarov.constants.ActionsConstants.*;
+import static com.javarush.cryptanalyzer.nazarov.constants.StatusConstants.*;
 
 public class StatisticalAnalyzer implements Action {
     @Override
@@ -19,7 +19,6 @@ public class StatisticalAnalyzer implements Action {
         String encodedFile = parameters[0], decodedFile = parameters[1], dictionary = parameters[2];
         Map<Character, Double> encodedTextStat = new HashMap<>(), dictionaryStat = new HashMap<>();
         StringBuilder encodedText = new StringBuilder(), dictionaryText = new StringBuilder();
-        System.out.println(PLEASE_WAIT);
 
         try (BufferedReader bufferedReader1 = new BufferedReader(new FileReader(encodedFile));
              BufferedReader bufferedReader2 = new BufferedReader(new FileReader(dictionary));
@@ -61,9 +60,9 @@ public class StatisticalAnalyzer implements Action {
             fileWriter.write(finalText.toString());
 
         } catch (IOException e) {
-            return new Result(ResultCode.ERROR, STAT_ANALYZER_ERROR);
+            return new Result(ResultCode.ERROR);
         }
-        return new Result(ResultCode.OK, STAT_ANALYSIS_FINISHED);
+        return new Result(ResultCode.OK);
     }
 
     private static Double getStat(Character character, StringBuilder stringBuilder) {

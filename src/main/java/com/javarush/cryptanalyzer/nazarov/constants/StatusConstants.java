@@ -1,6 +1,6 @@
 package com.javarush.cryptanalyzer.nazarov.constants;
 
-public class ActionsConstants {
+public class StatusConstants {
 
     public static final String KEY_FOUND = "Key found: ";
     public static final String FILE_ENCODED = "The file was encoded successfully";
@@ -11,8 +11,7 @@ public class ActionsConstants {
     public static final String BRUTEFORCE_ERROR = "Bruteforce analysis finished with error";
     public static final String STAT_ANALYSIS_FINISHED = "Statistical analysis finished";
     public static final String STAT_ANALYZER_ERROR = "Statistic analysis finished with error";
-    public static final String PLEASE_WAIT = "\nPlease wait a few seconds...\n";
 
-    private ActionsConstants() {
+    private StatusConstants() {
     }
 }

@@ -4,39 +4,31 @@ import com.javarush.cryptanalyzer.nazarov.entity.Result;
 import com.javarush.cryptanalyzer.nazarov.entity.ResultCode;
 import com.javarush.cryptanalyzer.nazarov.exception.AppException;
 import com.javarush.cryptanalyzer.nazarov.service.Action;
-import com.javarush.cryptanalyzer.nazarov.view.View;
-
-import static com.javarush.cryptanalyzer.nazarov.constants.ActionIncubatorConstants.*;
 import static com.javarush.cryptanalyzer.nazarov.constants.NumericConstants.*;
+import static com.javarush.cryptanalyzer.nazarov.controller.ActionIncubatorConstants.*;
 
 public class MainController {
-    View view;
 
-    public MainController(View view) {
-        this.view = view;
+    public MainController() {
     }
 
-    public View getView() {
-        return view;
-    }
-
-    public Result execute(String mode, String[] parameters) {
+    public Result doAction(String mode, String[] parameters) {
 
         try {
             Action action = getAction(mode);
             return action.execute(parameters);
+
         } catch (RuntimeException e) {
-            return new Result(ResultCode.ERROR, e.getMessage());
+            return new Result(ResultCode.ERROR);
         }
     }
 
-    public Action getAction(String mode) {
+    public com.javarush.cryptanalyzer.nazarov.service.Action getAction(String mode) {
         return switch (mode) {
-
             case ONE -> ActionIncubator.valueOf(ENCODER).getActionIncubatorValue();
             case TWO -> ActionIncubator.valueOf(DECODER).getActionIncubatorValue();
-            case THREE -> ActionIncubator.valueOf(BRUTEFORCEANALYZER).getActionIncubatorValue();
-            case FOUR -> ActionIncubator.valueOf(STATISTICALANALYZER).getActionIncubatorValue();
+            case THREE -> ActionIncubator.valueOf(BRUTEFORCE_ANALYZER).getActionIncubatorValue();
+            case FOUR -> ActionIncubator.valueOf(STATISTICAL_ANALYZER).getActionIncubatorValue();
             default -> throw new AppException();
         };
     }
